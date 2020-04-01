@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   
   name:     { type: String, required: true },
-  usertype: { type: String, required: true },  
+  usertype: { type: String, default: "Customer" },  
   company:  { type: String }, 
   street:   { type: String },
   city:     { type: String },
