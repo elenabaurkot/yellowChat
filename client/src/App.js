@@ -17,7 +17,7 @@ function App() {
           <Route exact path='/users' component={Users}  /> 
           <Route exact path='/customers' component={Customers}  /> 
           <Route exact path='/vendors' component={Vendors}  /> 
-          <Route exact path='/chat' component={Chat}  /> 
+          <Route exact path='/chat/:id' component={Chat}  /> 
           <Route component={UhOh404}  />
         </Switch>
         </React.Fragment>
