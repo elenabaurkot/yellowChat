@@ -4,13 +4,15 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   
   name:     { type: String, required: true },
-  usertype: { type: String, default: "Customer" },  
+  usertype: { type: String, default: "Customer" }, 
+  email:    { type: String, required: true}, 
+  password: { type: String, required: true},
+  date:     { type: Date, default: Date.now}, 
   company:  { type: String }, 
   street:   { type: String },
   city:     { type: String },
   state:    { type: String }, 
   zip:      { type: String }, 
-  email:    { type: String },
   phone:    { type: String },
   website:  { type: String },
   image:    { type: String },
