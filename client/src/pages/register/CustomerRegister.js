@@ -12,6 +12,7 @@ class CustomerRegister extends Component {
     this.state = {
       name: "",
       email: "",
+      username: "",
       password: "",
       password2: "",
       message: null
@@ -52,11 +53,12 @@ onSubmit = e => {
 const newUser = {
       name: this.state.name,
       usertype: "Customer",
+      username: this.state.username,
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2
     };
-console.log(newUser);
+// console.log(newUser);
 this.props.registerUser(newUser);
   };
 render() {
@@ -88,6 +90,15 @@ return (
                   type="text"
                 />
                 <label htmlFor="name">Name</label>
+              </div>
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
+                  name="username"
+                  id="username"
+                  type="text"
+                />
+                <label htmlFor="username">Username</label>
               </div>
               <div className="input-field col s12">
                 <input

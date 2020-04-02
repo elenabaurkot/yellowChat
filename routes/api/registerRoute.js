@@ -19,17 +19,27 @@ router.post("/", (req, res) => {
 //   if (!isValid) {
 //     return res.status(400).json(errors);
 //   }
-const {name, email, password} = req.body; 
+
+// const {name, username, email, password, usertype} = req.body; 
   
 User.findOne({ email: req.body.email }).then(user => {
     if (user) {
       return res.status(400).json({ email: "Email already exists" });
     } else {
       const newUser = new User({
+        company: req.body.company,
         name: req.body.name,
+        username: req.body.username,
         email: req.body.email,
         password: req.body.password,
-        usertype: req.body.usertype
+        usertype: req.body.usertype,
+        categories: req.body.categories,
+        street: req.body.street,
+        city: req.body.city,
+        state: req.body.state,
+        zip: req.body.zip,
+        phone: req.body.phone,
+        website: req.body.website
       });
       
 // Hash password before saving in database

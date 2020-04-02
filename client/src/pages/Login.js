@@ -35,7 +35,7 @@ componentDidUpdate(prevProps) {
       this.setState({message: null})
     }
   }
-  // if authenticated, redirect to login page
+  // if authenticated, redirect to main page
   if(isAuthenticated) {
     console.log("You're logged in");
     this.props.history.push("/users");
@@ -53,7 +53,7 @@ onSubmit = e => {
       email: this.state.email,
       password: this.state.password
     };
-console.log(userData);
+// console.log(userData);
 this.props.loginUser(userData);
   };
   
@@ -72,7 +72,7 @@ return (
                 <b>Login</b> below
               </h4>
               <p className="grey-text text-darken-1">
-                Don't have an account? <Link to="/register">Register</Link>
+                Don't have an account? <Link to="/vendorCustomer">Register</Link>
               </p>
             </div>
             <form noValidate onSubmit={this.onSubmit}>
