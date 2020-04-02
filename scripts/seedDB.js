@@ -10,7 +10,9 @@ mongoose.connect(
 
 const userSeed = [
   {
+    username:       "JPPizza",
     name:           "John Peter Geovani",
+    password:       "jppizza",
     usertype:       "Vendor", 
     company:        "JP Pizza", 
     street:         "101 Main",
@@ -26,7 +28,9 @@ const userSeed = [
     categories:["pizza", "Pasta", "Soup"]  
   },
   {
+    username:       "HealthMarket",
     name:           "Sandy Beach",
+    password:       "healthmarket",
     usertype:       "Vendor", 
     company:        "Health Market", 
     street:         "700 Hamilton St,",
@@ -42,7 +46,9 @@ const userSeed = [
     categories:["Organig Foods", "Vitamins", "Beauty Products"]  
   },
   {
+    username:       "JoeyStephens",
     name:           "Joey Stephens",
+    password:       "joeystephens",
     usertype:       "Customer", 
     company:        "", 
     street:         "",
@@ -58,7 +64,9 @@ const userSeed = [
     categories:["Pizza", "Beer", "Ice Cream"]  
   },
   {
+    username:       "CJHeart",
     name:           "CJ Heart",
+    password:       "cjheart",
     usertype:       "Customer", 
     company:        "", 
     street:         "10 Easton Ave",
@@ -74,7 +82,9 @@ const userSeed = [
     categories:[]  
   },
   {
+    username:       "EdibleArrangements",
     name:           "John Peter Geovani",
+    password:       "ediblearrangements",
     usertype:       "Vendor", 
     company:        "Edible Arrangements", 
     street:         "101 Easton Ave",

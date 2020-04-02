@@ -51,7 +51,7 @@ class Vendors extends Component {
               {this.state.userList.map(user => (
                 <ListItem key={user._id}>
                     <strong>
-                    <Link to={"/chat/:" + user._id}>Link to chat</Link>       
+                    <Link to={"/chat/username:" + user.username }>Link to Chat</Link>  
                     <div className='new-line'>Name: {user.name} </div>
                     <div className='new-line'>UserType: {user.usertype}  </div>
                     <div className='new-line'>Email: {user.email} </div>
