@@ -17,6 +17,7 @@ npm start
 ```
 
 
+
 ```
 Might need to run npx create-react-app yellow-chat then cd to yellow-chat first
 OR
@@ -46,3 +47,6 @@ image:     type: String
 loginid:         type: String   
 yellowchatlink:  type: String  
 categories:[]  
+
+
+Part 2 to come
