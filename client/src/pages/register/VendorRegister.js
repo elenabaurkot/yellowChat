@@ -60,7 +60,8 @@ const newUser = {
       company: this.state.company,
       name: this.state.name,
       usertype: "Vendor",
-      username: this.state.company,
+      // make with no spaces
+      username: this.state.company.replace(/\s+/g, ''),
       categories: this.state.categories,
       email: this.state.email,
       password: this.state.password,
