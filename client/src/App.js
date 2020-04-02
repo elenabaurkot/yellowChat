@@ -31,7 +31,7 @@ function App() {
           <Route exact path='/users' component={Users}  /> 
           <Route exact path='/customers' component={Customers}  /> 
           <Route exact path='/vendors' component={Vendors}  /> 
-          <Route exact path='/chat/:username' component={Chat}  />
+          <Route exact path='/chat/:vendorName' component={Chat}  />
           <Route exact path="/login" component={Login} />
           <Route exact path="/main" component={Main} />
           <Route exact path="/vendorCustomer" component={VendorCustomer} />

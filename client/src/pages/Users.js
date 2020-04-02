@@ -50,7 +50,7 @@ class Users extends Component {
               {this.state.userList.map(user => (
                 <ListItem key={user._id}>
                     <strong>
-                    <Link to={"/chat/username:" + user.username }>Link to Chat</Link> 
+                    <Link to={"/chat/" + user.username }>Click to Chat💬</Link> 
                     <div className='new-line'>Name: {user.name}</div>
                     <div className='new-line'>UserType: {user.usertype}  </div>
                     <div className='new-line'>Email: {user.email} </div>

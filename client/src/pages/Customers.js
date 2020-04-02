@@ -6,6 +6,7 @@ import Column from "../components/Column";
 import { Link } from "react-router-dom";
 import { List, ListItem } from "../components/List";
 import { getCustomers } from "../utils/API";
+import Navyvendorside from "../components/Navyvendorside"
 
 
 class Customers extends Component {
@@ -28,6 +29,7 @@ class Customers extends Component {
     render() {
       return (
         <>
+        <Navyvendorside/>
           <Container fluid>
       <Row>
         <Column size="md-6 sm-12">
@@ -36,7 +38,7 @@ class Customers extends Component {
             pageTitle={'All Customers'} 
             />
                      
-        
+{/*         
              <List>              
                   <ListItem>
                   <Link to={"/"}><strong>Link to Login</strong></Link> &nbsp;| &nbsp;
@@ -44,7 +46,7 @@ class Customers extends Component {
                     <Link to={"/customers"}><strong>Link Customers</strong></Link> &nbsp;| &nbsp;
                     <Link to={"/vendors"}><strong>Link Vendors</strong></Link>                 
                   </ListItem>             
-              </List>     
+              </List>      */}
           {this.state.userList.length  ? (
             <List>
               {this.state.userList.map(user => (

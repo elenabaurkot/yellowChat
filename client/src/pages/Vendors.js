@@ -6,6 +6,7 @@ import Column from "../components/Column";
 import { Link } from "react-router-dom";
 import { List, ListItem } from "../components/List";
 import { getVendors } from "../utils/API";
+import Navy from "../components/Navy"
 
 
 class Vendors extends Component {
@@ -28,6 +29,7 @@ class Vendors extends Component {
     render() {
       return (
         <>
+        <Navy />
           <Container fluid>
       <Row>
         <Column size="md-6 sm-12">
@@ -37,7 +39,7 @@ class Vendors extends Component {
             />
                      
         
-             <List>              
+             {/* <List>              
                   <ListItem>
                    <Link to={"/"}><strong>Link to Login</strong></Link> &nbsp;| &nbsp;
                     <Link to={"/users"}><strong>All Users</strong></Link> &nbsp;| &nbsp;
@@ -45,13 +47,13 @@ class Vendors extends Component {
                     <Link to={"/vendors"}><strong>Link Vendors</strong></Link>                 
                                       
                   </ListItem>             
-              </List>     
+              </List>      */}
           {this.state.userList.length  ? (
             <List>
               {this.state.userList.map(user => (
                 <ListItem key={user._id}>
                     <strong>
-                    <Link to={"/chat/username:" + user.username }>Link to Chat</Link>  
+                    <Link to={"/chat/" + user.username }>Link to Chat</Link>  
                     <div className='new-line'>Name: {user.name} </div>
                     <div className='new-line'>UserType: {user.usertype}  </div>
                     <div className='new-line'>Email: {user.email} </div>
