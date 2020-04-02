@@ -19,7 +19,8 @@ router.post("/", (req, res) => {
 //   if (!isValid) {
 //     return res.status(400).json(errors);
 //   }
-const {name, email, password} = req.body; 
+
+// const {name, username, email, password, usertype} = req.body; 
   
 User.findOne({ email: req.body.email }).then(user => {
     if (user) {
@@ -27,6 +28,7 @@ User.findOne({ email: req.body.email }).then(user => {
     } else {
       const newUser = new User({
         name: req.body.name,
+        username: req.body.username,
         email: req.body.email,
         password: req.body.password,
         usertype: req.body.usertype

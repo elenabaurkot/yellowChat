@@ -16,14 +16,14 @@ import {
 } from "./types";
 
 // Register User
-export const registerUser = ({name, email, password, usertype}) => dispatch => {
+export const registerUser = ({name, username, email, password, usertype}) => dispatch => {
   // headers
   const config= {
     headers: 
     {"Content-type": "application/json"}
   }
   // request body
-  const body= JSON.stringify({name, email, password, usertype});
+  const body= JSON.stringify({name, username, email, password, usertype});
   axios
     .post("/api/register", body, config)
     .then(res => dispatch({
