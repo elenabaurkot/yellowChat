@@ -16,6 +16,7 @@ import Main from "./pages/Main";
 import VendorCustomer from "./pages/register/VendorCustomer";
 import CustomerRegister from "./pages/register/CustomerRegister";
 import VendorRegister from "./pages/register/VendorRegister";
+import Reviews from './pages/Reviews'
 
 
 
@@ -37,6 +38,8 @@ function App() {
           <Route exact path="/vendorCustomer" component={VendorCustomer} />
           <Route exact path="/customerRegister" component={CustomerRegister} />
           <Route exact path="/vendorRegister" component={VendorRegister} />
+          <Route exact path="/userreviews" component={Reviews} />
+
           {/* <Route component={UhOh404}  /> */}
         </div>
         </Switch>

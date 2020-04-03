@@ -9,6 +9,7 @@ class Landing extends Component {
             <h4 className="mb-5">
             Welcome to YellowChat, please login or sign up to continue to the site
             </h4>
+            <img src="https://res.cloudinary.com/dejaksfsk/image/upload/v1585878569/yellowcat_ihfpsk.gif" width="250" height="250"/>
             <br />
             <div className="col s6">
               <Link
