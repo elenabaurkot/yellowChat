@@ -9,7 +9,7 @@ import Users from "./pages/Users";
 import Chat from "./pages/Chat";
 import Customers from "./pages/Customers";
 import Vendors from "./pages/Vendors";
-import UhOh404 from "./pages/UhOh404";
+// import UhOh404 from "./pages/UhOh404";
 import Navbar from "./components/Navbar";
 import Landing from "./pages/Landing";
 import Main from "./pages/Main";
@@ -33,19 +33,19 @@ function App() {
         <div className="App">
         <Navbar />
           <Route exact path='/' component={Landing}  />
-          <Route exact path='/registerLogin' component={RegisterLogin}  /> 
-          <Route exact path='/users' component={Users}  /> 
-          <Route exact path='/customers' component={Customers}  /> 
-          <Route exact path='/vendors' component={Vendors}  /> 
-          <Route exact path='/chat/:vendorName' component={Chat}  />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/main" component={Main} />
-          <Route exact path="/vendorCustomer" component={VendorCustomer} />
-          <Route exact path="/customerRegister" component={CustomerRegister} />
-          <Route exact path="/vendorRegister" component={VendorRegister} />
-          <Route exact path="/userreviews" component={Reviews} />
-
-          {/* <Route component={UhOh404}  /> */}
+          <Route  path='/registerLogin' component={RegisterLogin}  /> 
+          <Route  path='/users' component={Users}  /> 
+          <Route  path='/customers' component={Customers}  /> 
+          <Route  path='/vendors' component={Vendors}  /> 
+          <Route  path='/chat/:vendorName' component={Chat}  />
+          <Route  path="/login" component={Login} />
+          <Route  path="/main" component={Main} />
+          <Route  path="/vendorCustomer" component={VendorCustomer} />
+          <Route  path="/customerRegister" component={CustomerRegister} />
+          <Route  path="/vendorRegister" component={VendorRegister} />
+          <Route  path="/userreviews" component={Reviews} />
+          {/* <Route path="" component={UhOh404}  /> */}
+         
         </div>
         </Switch>
       </React.Fragment>

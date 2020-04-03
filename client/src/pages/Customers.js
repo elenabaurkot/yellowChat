@@ -9,10 +9,12 @@ import { getCustomers } from "../utils/API";
 import Navyvendorside from "../components/Navyvendorside"
 
 
+ // get all Customers and displays them for chatting for vendors
 class Customers extends Component {
     state = {  
       userList : []
     }
+    
     
     handlegetCustomers = () => {
       getCustomers().then(({ data: userList }) => {
@@ -26,6 +28,7 @@ class Customers extends Component {
     }
   
   
+
     render() {
       return (
         <>
@@ -37,29 +40,22 @@ class Customers extends Component {
             color={'dark'} 
             pageTitle={'Vendor Dashboard'} 
             />
-                     
-{/*         
-             <List>              
-                  <ListItem>
-                  <Link to={"/"}><strong>Link to Login</strong></Link> &nbsp;| &nbsp;
-                    <Link to={"/users"}><strong>All Users</strong></Link> &nbsp;| &nbsp;
-                    <Link to={"/customers"}><strong>Link Customers</strong></Link> &nbsp;| &nbsp;
-                    <Link to={"/vendors"}><strong>Link Vendors</strong></Link>                 
-                  </ListItem>             
-              </List>      */}
+                
           {this.state.userList.length  ? (
             <List>
               {this.state.userList.map(user => (
                 <ListItem key={user._id}>
-                    <strong>
-                    <Link to={"/chat/username:" + user.username }>Link to Chat</Link>    
-                    <div className='new-line'>Name: {user.name}   </div>
-                    <div className='new-line'>UserType: {user.usertype}  </div>
-                    <div className='new-line'>Email: {user.email} </div>
-                    <div className='new-line'>Company: {user.company} </div>
-                    <div className='new-line'>Categories: {user.categories[0]}, {user.categories[1]}, {user.categories[2]}</div>
-                    <div className='new-line'>_id: {user._id} </div>
-                    </strong>              
+              
+                    <Link to={"/chat/username:" + user.username }>Click to Chat <span role="img" aria-label="sheep">💬</span></Link>    
+                    <div className='new-line'><span className="font-weight-bold"> {user.name} </span>  </div>
+              
+                    <div className='new-line'>&nbsp; Email: {user.email} </div>
+
+                     {user.categories[0] ? (
+                      <div className='new-line'>&nbsp; Intertests: <span className="font-weight-bold">{user.categories[0]} {user.categories[1]} {user.categories[2]}</span></div>
+                      ) : (
+                      <div className='new-line'> </div>
+                     )}           
                  
                 </ListItem>
               ))}

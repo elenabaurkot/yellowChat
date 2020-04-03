@@ -20,7 +20,7 @@ const Jumbotron = props => {
       <Container>
         <Row helper={'justify-content-around'}>
             <Column>
-                <h1>{props.pageTitle}</h1>
+                <h4>{props.pageTitle}</h4>
             </Column>
         </Row>
 

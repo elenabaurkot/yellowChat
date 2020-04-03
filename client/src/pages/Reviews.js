@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
-// import Jumbotron from "../components/Jumbotron";
-// import DeleteBtn from "../components/DeleteBtn";
 import APIReviews from "../utils/APIReviews";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
-// import Detail from "./Detail";
-// import { Link } from "react-router-dom";
+
 
 function Books() {
 
@@ -67,23 +64,14 @@ function Books() {
 
   }
 
-  function deleteBook(id) {
-    // add code here to remove a book using API
-    APIReviews.deleteBook(id)
-      .then(res =>
-        loadReviews()
-      )
-      .catch((err) =>
-        console.log(err)
-      )
-  }
+
 
   return (
     <Container fluid>
       <Row>
         <Col size="md-6">
          
-            <h1>Write your review!</h1>
+            <h5>Write a review about a Vendor or anything!</h5>
           <form>
             {/* inputs should be updated to be controlled inputs */}
             <Input
@@ -98,13 +86,7 @@ function Books() {
               placeholder="Review (required)"
               value={formObject.title}
             />
-         
-            {/* <TextArea
-              onChange={handleInputChange}
-              name="synopsis"
-              placeholder="Your Review"
-              value={formObject.synopsis}
-            /> */}
+        
             <FormBtn
               disabled={!(formObject.author && formObject.title)}
               onClick={handleFormSubmit}
@@ -115,29 +97,24 @@ function Books() {
         </Col>
         <Col size="md-6 sm-12">
           
-            <h1>Latest reviews:</h1>
+            <h5>Latest reviews:</h5>
          
           {reviews.length ? (
                 <List>
                 {reviews.map(review => {
                     return (
                         <ListItem key={review._id}>
-    
-                            {/* <Link to={`/books/${review._id}`}> */}
-                                {/* // <a href={"/books/" + book._id}> */}
+  
                                 <strong>
                                     {review.author}: {review.title}
                                 </strong>
-                            {/* </Link> */}
-                            {/* // </a> */}
-                            {/* <DeleteBtn onClick={() => deleteBook(review._id)} /> */}
-    
+                     
                         </ListItem>
                     );
                 })}
             </List>
           ) : (
-              <h3>No Results to Display</h3>
+              <h6>Be the first to write a review.</h6>
             )}
         </Col>
       </Row>
