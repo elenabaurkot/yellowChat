@@ -25,7 +25,7 @@ const userSeed = [
     image:          "https://res.cloudinary.com/dejaksfsk/image/upload/c_scale,w_154/v1585447078/jppizza_dhby2q.png",
     loginid:        "",
     yellowchatlink: "",
-    categories:["pizza", "Pasta", "Soup"]  
+    categories:["Pizza", "Pasta", "Soup"]  
   },
   {
     username:       "HealthMarket",
@@ -43,7 +43,7 @@ const userSeed = [
     image:          "",
     loginid:        "",
     yellowchatlink: "",
-    categories:["Organig Foods", "Vitamins", "Beauty Products"]  
+    categories:["Organic Foods", "Vitamins", "Beauty Products"]  
   },
   {
     username:       "JoeyStephens",

@@ -16,7 +16,11 @@ import Main from "./pages/Main";
 import VendorCustomer from "./pages/register/VendorCustomer";
 import CustomerRegister from "./pages/register/CustomerRegister";
 import VendorRegister from "./pages/register/VendorRegister";
+
 import Reviews from './pages/Reviews'
+//=======
+import RegisterLogin from "./pages/RegisterLogin";
+
 
 
 
@@ -29,6 +33,7 @@ function App() {
         <div className="App">
         <Navbar />
           <Route exact path='/' component={Landing}  />
+          <Route exact path='/registerLogin' component={RegisterLogin}  /> 
           <Route exact path='/users' component={Users}  /> 
           <Route exact path='/customers' component={Customers}  /> 
           <Route exact path='/vendors' component={Vendors}  /> 

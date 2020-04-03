@@ -37,7 +37,7 @@ componentDidUpdate(prevProps) {
       this.setState({message: null})
     }
   }
-  // if authenticated, redirect to login page
+  // if they register (but aren't logged in yet) redirect to login page
   if(isRegistered && !isAuthenticated) {
     this.props.history.push("/login");
   }
