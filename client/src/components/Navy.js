@@ -46,8 +46,8 @@ function Navy(props) {
                     <Nav className="mr-auto">
                         {/* <Nav.Link href="/userlogin">Login</Nav.Link>
                         <Nav.Link href="/customerRegister">Register</Nav.Link> */}
-                        <Nav.Link href="/vendorRegister">For Vendors</Nav.Link>
-                        <Nav.Link href="#">Blog</Nav.Link>
+                        <Nav.Link href="#">click the @yellowchat link and chat with a shop now!</Nav.Link>
+                        {/* <Nav.Link href="#">Blog</Nav.Link> */}
 
                     </Nav>
                     <Form inline>
@@ -84,12 +84,12 @@ function Navy(props) {
                 <Nav className="mr-auto">
                     {/* <Nav.Link href="/userlogin">Login</Nav.Link>
                     <Nav.Link href="/userregister">Register</Nav.Link> */}
-                    <Nav.Link href="/vendor">For Vendors</Nav.Link>
-                    <Nav.Link href="#">Contact</Nav.Link>
+                    {/* <Nav.Link href="/vendor">For Vendors</Nav.Link>
+                    <Nav.Link href="#">Contact</Nav.Link> */}
 
                 </Nav>
                 <Form inline>
-                    <input onChange={event => setValue(event.target.value)} class="form-control" type="text" placeholder="Search" aria-label="Search"></input>
+                    <input onChange={event => setValue(event.target.value)} class="form-control" type="text" placeholder="chat with local shops" aria-label="Search"></input>
                     {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" /> */}
                     {/* <Button variant="outline-info">Search</Button> */}
                 </Form>

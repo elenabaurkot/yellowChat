@@ -35,7 +35,7 @@ class Customers extends Component {
         <Column size="md-6 sm-12">
           <Jumbotron fluid bg={'light'} 
             color={'dark'} 
-            pageTitle={'All Customers'} 
+            pageTitle={'Vendor Dashboard'} 
             />
                      
 {/*         
