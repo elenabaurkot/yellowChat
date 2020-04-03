@@ -50,13 +50,12 @@ class Users extends Component {
               {this.state.userList.map(user => (
                 <ListItem key={user._id}>
                     <strong>
-                    <Link to={"/chat/" + user.username }>Click to Chat💬</Link> 
+                    <Link to={"/chat/" + user.username }>Click to Chat<span role="img" aria-label="sheep">💬</span></Link> 
                     <div className='new-line'>Name: {user.name}</div>
                     <div className='new-line'>UserType: {user.usertype}  </div>
                     <div className='new-line'>Email: {user.email} </div>
                     <div className='new-line'>Company: {user.company} </div>
                     <div className='new-line'>Categories: {user.categories[0]}, {user.categories[1]}, {user.categories[2]}</div>
-                    <div className='new-line'>_id: {user._id} </div>
                     </strong>              
                  
                 </ListItem>

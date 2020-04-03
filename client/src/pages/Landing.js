@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Quickreviews from "../components/Quickreviews"
 
 class Landing extends Component {
   render() {
     return (
+      <>
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
           <div className="col s12 center-align">
             <h4 className="mb-2">
             Welcome to YellowChat
             </h4>
-            <img src="https://res.cloudinary.com/dejaksfsk/image/upload/v1585878569/yellowcat_ihfpsk.gif" width="250" height="250"/>
+            <img src="https://res.cloudinary.com/dejaksfsk/image/upload/v1585878569/yellowcat_ihfpsk.gif" width="250" height="250" alt="Yellow Cat" />
             <br />
 
             <h5 className="mb-5"
@@ -36,7 +38,10 @@ class Landing extends Component {
             </div>
           </div>
         </div>
+       
       </div>
+      <Quickreviews />
+      </>
     );
   }
 }

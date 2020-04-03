@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
+import { Navbar, Nav, Form } from 'react-bootstrap'
 import { getCustomers } from "../utils/API"
 
 function Navy(props) {
     const [queryValue, setValue] = useState('')
     const [userList, setUserList] = useState([])
-    var userData;
-    //get database 
+   
    
 
    function handleGetCustomers (){
@@ -44,16 +43,14 @@ function Navy(props) {
                 <Navbar bg="dark" variant="dark">
                     <Navbar.Brand href="/" style={styles}>yellowchat</Navbar.Brand>
                     <Nav className="mr-auto">
-                        {/* <Nav.Link href="/userlogin">Login</Nav.Link>
-                        <Nav.Link href="/customerRegister">Register</Nav.Link> */}
+                       
                         <Nav.Link href="/vendorRegister">For Vendors</Nav.Link>
                         <Nav.Link href="#">Blog</Nav.Link>
 
                     </Nav>
                     <Form inline>
                         <input onChange={event => setValue(event.target.value)} class="form-control" type="text" placeholder="chat local shops" aria-label="Search"></input>
-                        {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" /> */}
-                        {/* <Button variant="outline-info">Search</Button> */}
+                
                     </Form>
                 </Navbar>
 
@@ -62,9 +59,9 @@ function Navy(props) {
                     <div style={searchDiv}>
                         <tr>
                             <th scope="row"></th>
-                            {/* <td><img src={filteredName.image} alt="profilepic"></img></td> */}
+                     
                             <td>{filteredName.company}</td>
-                            {/* <td>{filteredName.phone},</td> */}
+                         
                             <a href={'/vendor/' + filteredName.name}><td>@yellowchat</td></a>
 
                         </tr>
@@ -82,16 +79,14 @@ function Navy(props) {
             <Navbar bg="dark" variant="dark">
                 <Navbar.Brand href="/" style={styles}>yellowchat</Navbar.Brand>
                 <Nav className="mr-auto">
-                    {/* <Nav.Link href="/userlogin">Login</Nav.Link>
-                    <Nav.Link href="/userregister">Register</Nav.Link> */}
+                  
                     <Nav.Link href="#">Search for Customers</Nav.Link>
                     <Nav.Link href="#">Contact</Nav.Link>
 
                 </Nav>
                 <Form inline>
                     <input onChange={event => setValue(event.target.value)} class="form-control" type="text" placeholder="Search" aria-label="Search"></input>
-                    {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" /> */}
-                    {/* <Button variant="outline-info">Search</Button> */}
+                   
                 </Form>
             </Navbar>
         </div>
