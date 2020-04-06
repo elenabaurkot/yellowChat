@@ -37,13 +37,8 @@ componentDidUpdate(prevProps) {
   }
   // if authenticated, redirect to main page
   if(isAuthenticated) {
-    console.log("You're logged in");
-    if (this.props.usertype === "Vendor") {
-    this.props.history.push("/customers");
-    } else {
       this.props.history.push("/vendors");
     }
-  }
 }
 
 onChange = e => {

@@ -31,7 +31,6 @@ const getVendors = (req, res) => {
 };
 
 
-
 module.exports = {
   getUsers,
   getCustomers,

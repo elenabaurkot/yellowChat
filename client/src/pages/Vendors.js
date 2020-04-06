@@ -6,8 +6,10 @@ import Column from "../components/Column";
 import { Link } from "react-router-dom";
 import { List, ListItem } from "../components/List";
 import { getVendors } from "../utils/API";
-import Navy from "../components/Navy"
-import Reviews from "./Reviews"
+import Navy from "../components/Navy";
+import Reviews from "./Reviews";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 
  // get all vendors and displays them for chatting
@@ -15,6 +17,14 @@ class Vendors extends Component {
   state = {
     userList: []
   }
+
+  static propTypes= {
+    auth: PropTypes.object.isRequired
+  }
+
+  // componentDidMount() {
+  //   this.props.getVendors()
+  // }
 
  
   handleGetVendors = () => {
@@ -25,11 +35,14 @@ class Vendors extends Component {
   }
 
   componentDidMount() {
-    this.handleGetVendors()
+    this.handleGetVendors();
+    // this.props.getVendors();
   }
 
 
   render() {
+    // const { userList } = this.props.auth;
+    // console.log(userList);
 
     return (
       <>
@@ -75,4 +88,11 @@ class Vendors extends Component {
   }
 }
 
-export default Vendors;
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+export default connect(
+  mapStateToProps, 
+  { getVendors }
+) (Vendors);

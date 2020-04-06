@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const config = require("config");
 const jwt = require("jsonwebtoken");
+const auth = require("../../middleware/auth");
 
 // Load input validation
 const validateLoginInput = require("../../validation/login");
@@ -31,20 +32,27 @@ const email = req.body.email;
       if (isMatch) {
         // User matched
         // Create JWT Payload
-        const payload = {
-          id: user.id,
-          name: user.name
-        };
+        // const payload = {
+        //   id: user.id,
+        //   name: user.name
+        // };
 // Sign token
    jwt.sign(
-     payload,
+     {id: user.id},
       config.get("jwtSecret"), 
       {expiresIn: 3600},
         (err, token) => {
           if (err) throw (err);
           res.json({
             success: true,
-            token: "Bearer " + token
+            token,
+            user: {
+              id: user.id,
+              name: user.name,
+              email: user.email,
+              usertype: user.usertype
+            }
+            // token: "Bearer " + token
           });
         }
       );
@@ -63,5 +71,14 @@ router.get("/", (req, res) => {
         res.json(user)
       })
   });
+
+  // router.get('/user', auth, (req, res) => {
+  //   User.findById(req.user.id)
+  //   .select('-password')
+  //   .then(user => res.json(user))
+  // });
+
+
+
 
 module.exports = router;
