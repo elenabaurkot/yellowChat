@@ -10,8 +10,9 @@ export const getCustomers = () =>{
     return axios.get('/api/users/customers'); 
 }
 
-export const getVendors = () =>{
-    return axios.get('/api/users/vendors'); 
+export const getVendors = (token) =>{
+    
+    return axios.get('/api/users/vendors', {headers: {"x-auth-token": token}}); 
 }
 
 export default {   

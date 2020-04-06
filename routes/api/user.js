@@ -16,7 +16,7 @@ const User = require("../../models/user");
   // .get(auth, getVendors)
 
 
-  router.get('/vendors', (req, res) => {
+  router.get('/vendors', auth, (req, res) => {
     User.find({ usertype: 'Vendor' })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {
