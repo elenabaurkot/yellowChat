@@ -17,7 +17,8 @@ class Customers extends Component {
     
     
     handlegetCustomers = () => {
-      getCustomers().then(({ data: userList }) => {
+      const token = localStorage.getItem("token");
+      getCustomers(token).then(({ data: userList }) => {
         console.log("getCustomers: ", userList);
         this.setState({userList})
       }).catch(err => console.log(err)) 

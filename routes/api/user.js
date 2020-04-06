@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const { getUsers, getCustomers, getVendors } = require("../../controllers/userController");
 const auth = require("../../middleware/auth");
-const User = require("../../models/user");
 
 // router.route('/')
 //   .get(getUsers)
@@ -10,22 +9,11 @@ const User = require("../../models/user");
   .get(auth, getUsers)
  
   router.route('/customers')
-  .get(getCustomers)
+  .get(auth, getCustomers)
 
-  // router.route('/vendors')
-  // .get(auth, getVendors)
+  router.route('/vendors')
+  .get(auth, getVendors)
 
-
-  router.get('/vendors', auth, (req, res) => {
-    User.find({ usertype: 'Vendor' })
-    .then(dbUserData => res.json(dbUserData))
-    .catch(err => {
-      console.log(err);
-      res.json(err);
-    });
-  });
-
- 
 
 
 module.exports = router;

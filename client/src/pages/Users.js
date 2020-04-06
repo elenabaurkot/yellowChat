@@ -14,7 +14,8 @@ class Users extends Component {
     }
     
     handleGetUsers = () => {
-      getUsers().then(({ data: userList }) => {
+      const token = localStorage.getItem("token");
+      getUsers(token).then(({ data: userList }) => {
         console.log("getUsers: ", userList);
         this.setState({userList})
       }).catch(err => console.log(err)) 
