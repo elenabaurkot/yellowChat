@@ -1,5 +1,5 @@
 const express = require("express");
-const config = require('config');
+
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
@@ -10,9 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // const userRouter = require("./routes/api/user")
-app.use("/api/user", require('./routes/api/user'));
-app.use("/api/loginRoute", require('./routes/api/loginRoute'));
-app.use("/api/registerRoute", require("./routes/api/registerRoute"));
+// app.use("/user", userRouter);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -23,13 +21,10 @@ app.use(express.static("public"));
 app.use(routes);
 
 
-// DB Config
-const db = config.get('mongoURI');
-
 //Connect to the Mongo DB
 mongoose.Promise = Promise;
 mongoose.connect(
-  db,
+  process.env.MONGODB_URI || "mongodb://localhost/yellowchat",
   { useNewUrlParser: true, useUnifiedTopology: true  }  
   )
   .then(() => console.log("MongoDB successfully connected"))
@@ -39,5 +34,3 @@ mongoose.connect(
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
-
-
