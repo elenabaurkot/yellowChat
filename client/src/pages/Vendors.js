@@ -6,8 +6,8 @@ import Column from "../components/Column";
 import { Link } from "react-router-dom";
 import { List, ListItem } from "../components/List";
 import { getVendors } from "../utils/API";
-import Navy from "../components/Navy";
-import Reviews from "./Reviews";
+import Navy from "../components/Navy"
+import Reviews from "./Reviews"
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -15,34 +15,28 @@ import PropTypes from "prop-types";
  // get all vendors and displays them for chatting
 class Vendors extends Component {
   state = {
-    vendorsList: []
+    userList: []
   }
 
-  static propTypes= {
-    auth: PropTypes.object.isRequired
-  }
-
-  // componentDidMount() {
-  //   this.props.getVendors()
-  // }
-
+ static propTypes = {
+   getVendors: PropTypes.func.isRequired,
+   auth: PropTypes.object.isRequired
+ }
  
   handleGetVendors = () => {
-    getVendors().then(({ data: vendorsList }) => {
-      console.log("getVendors", vendorsList);
-      this.setState({ vendorsList })
+    getVendors().then(({ data: userList }) => {
+      console.log("getVendors", userList);
+      this.setState({ userList })
     }).catch(err => console.log(err))
   }
 
   componentDidMount() {
-    this.props.handleGetVendors();
-    // this.props.getVendors();
+    this.handleGetVendors();
   }
 
 
   render() {
-    // const { vendorsList } = this.props.auth;
-    // console.log(vendorsList);
+    const { user } = this.props.auth;
 
     return (
       <>
@@ -55,10 +49,10 @@ class Vendors extends Component {
                 color={'dark'}
                 pageTitle={'Vendors'}
               />
-              {this.state.vendorsList.length ? (
+              {user ? (
                 <div>
                   <List>
-                    {this.state.vendorsList.map(user => (
+                    {user.map(user => (
                       <ListItem key={user._id}>
                         <strong>
                           <Link to={"/chat/" + user.username}>Click to Chat <span role="img" aria-label="sheep">💬</span></Link>
@@ -92,7 +86,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 })
 
-export default connect(
-  mapStateToProps, 
-  { getVendors }
-) (Vendors);
+export default connect(mapStateToProps, {getVendors})(Vendors);

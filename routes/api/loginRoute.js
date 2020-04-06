@@ -65,12 +65,12 @@ const email = req.body.email;
   });
 });
 
-router.get("/", (req, res) => {
-    User.find().select("-password") 
-      .then(user => {
-        res.json(user)
-      })
-  });
+// router.get("/", (req, res) => {
+//     User.find().select("-password") 
+//       .then(user => {
+//         res.json(user)
+//       })
+//   });
 
   // router.get('/user', auth, (req, res) => {
   //   User.findById(req.user.id)
