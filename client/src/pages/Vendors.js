@@ -15,7 +15,7 @@ import PropTypes from "prop-types";
  // get all vendors and displays them for chatting
 class Vendors extends Component {
   state = {
-    userList: []
+    vendorsList: []
   }
 
   static propTypes= {
@@ -28,21 +28,21 @@ class Vendors extends Component {
 
  
   handleGetVendors = () => {
-    getVendors().then(({ data: userList }) => {
-      console.log("getVendors", userList);
-      this.setState({ userList })
+    getVendors().then(({ data: vendorsList }) => {
+      console.log("getVendors", vendorsList);
+      this.setState({ vendorsList })
     }).catch(err => console.log(err))
   }
 
   componentDidMount() {
-    this.handleGetVendors();
+    this.props.handleGetVendors();
     // this.props.getVendors();
   }
 
 
   render() {
-    // const { userList } = this.props.auth;
-    // console.log(userList);
+    // const { vendorsList } = this.props.auth;
+    // console.log(vendorsList);
 
     return (
       <>
@@ -55,10 +55,10 @@ class Vendors extends Component {
                 color={'dark'}
                 pageTitle={'Vendors'}
               />
-              {this.state.userList.length ? (
+              {this.state.vendorsList.length ? (
                 <div>
                   <List>
-                    {this.state.userList.map(user => (
+                    {this.state.vendorsList.map(user => (
                       <ListItem key={user._id}>
                         <strong>
                           <Link to={"/chat/" + user.username}>Click to Chat <span role="img" aria-label="sheep">💬</span></Link>

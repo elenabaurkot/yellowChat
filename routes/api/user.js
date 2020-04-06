@@ -10,10 +10,10 @@ router.route('/')
   // .get(getUsers)
  
   router.route('/customers')
-  .get(auth, getCustomers)
+  .get(getCustomers)
 
   router.route('/vendors')
-  .get(auth, getVendors)
+  .get(getVendors)
 
  
 
