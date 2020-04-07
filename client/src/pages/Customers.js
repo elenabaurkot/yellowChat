@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Moment from "moment"; 
 import Jumbotron from "../components/Jumbotron";
 import Container from "../components/Container";
 import Row from "../components/Row";
@@ -6,10 +7,11 @@ import Column from "../components/Column";
 import { Link } from "react-router-dom";
 import { List, ListItem } from "../components/List";
 import { getCustomers } from "../utils/API";
+import { saveHistory } from "../utils/APIHistory";
 import Navyvendorside from "../components/Navyvendorside"
 
 
- // get all Customers and displays them for chatting for vendors
+ // get all Customers and displays them for chatting for vendors and loads page history
 class Customers extends Component {
     state = {  
       userList : []
@@ -21,6 +23,18 @@ class Customers extends Component {
         console.log("getCustomers: ", userList);
         this.setState({userList})
       }).catch(err => console.log(err)) 
+
+
+      // loads page history into db
+      saveHistory({
+        historytype: "Customer Page",
+        username:    "test",
+        detail:      "arrived at customer page",
+        date:        Moment().format()
+      })
+      .then(
+      ).catch((err) => console.log(err))
+
     }
   
     componentDidMount() {
@@ -38,7 +52,7 @@ class Customers extends Component {
         <Column size="md-6 sm-12">
           <Jumbotron fluid bg={'light'} 
             color={'dark'} 
-            pageTitle={'Vendor Dashboard'} 
+            pageTitle={'Vendors'} 
             />
                 
           {this.state.userList.length  ? (

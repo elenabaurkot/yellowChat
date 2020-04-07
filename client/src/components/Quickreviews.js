@@ -9,7 +9,7 @@ function Reviews() {
   const [reviews, setReviews] = useState([])
 
 
-  // Load all reviews and store them with setBooks
+  // Load all reviews and store them with setBlog
   useEffect(() => {
     loadReviews()
   }, [])

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Navbar, Nav, Form } from 'react-bootstrap'
 import { getCustomers } from "../utils/API"
 
+
+// navagation with search
 function Navy(props) {
     const [queryValue, setValue] = useState('')
     const [userList, setUserList] = useState([])

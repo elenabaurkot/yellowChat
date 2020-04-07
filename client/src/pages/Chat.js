@@ -1,12 +1,12 @@
 // App.js
-
+import Moment from "moment"; 
 import React, { useState, useEffect } from 'react';
 import useSocket from 'use-socket.io-client';
 import { useImmer } from 'use-immer';
 import './index.css';
 import Navy from '../components/Navy'
-// import { BrowserRouter as Router, Switch, Route, Link, useParams} from "react-router-dom";
 import { useParams} from "react-router-dom";
+import { saveHistory } from "../utils/APIHistory";
 
 
 const Messages = props => props.data.map(m => m[0] !== '' ? (<li><strong>{m[0]}</strong> : <div className="innermsg">{m[1]}</div></li>) : (<li className="update">{m[1]}</li>));
@@ -34,6 +34,17 @@ export default function Chat() {
   useEffect(() => {
     setRoom(vendorName);
   }, [])
+
+
+  // loads page history into db
+  saveHistory({
+    historytype: "Chat Page",
+    username:    "test",
+    detail:      `vendor name: ${vendorName}`,
+    date:         Moment().format()
+  })
+  .then().catch((err) => console.log(err))
+
 
   useEffect(() => {
     socket.on('message que', (nick, message) => {
