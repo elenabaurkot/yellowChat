@@ -9,6 +9,7 @@ import Users from "./pages/Users";
 import Chat from "./pages/Chat";
 import Customers from "./pages/Customers";
 import Vendors from "./pages/Vendors";
+import Dashboard from "./pages/Dashboard";
 // import UhOh404 from "./pages/UhOh404";
 import Navbar from "./components/Navbar";
 import Landing from "./pages/Landing";
@@ -16,6 +17,7 @@ import Main from "./pages/Main";
 import VendorCustomer from "./pages/register/VendorCustomer";
 import CustomerRegister from "./pages/register/CustomerRegister";
 import VendorRegister from "./pages/register/VendorRegister";
+
 
 import Reviews from './pages/Reviews'
 //=======
@@ -44,6 +46,7 @@ function App() {
           <Route  path="/customerRegister" component={CustomerRegister} />
           <Route  path="/vendorRegister" component={VendorRegister} />
           <Route  path="/userreviews" component={Reviews} />
+          <Route  path="/dashboard" component={Dashboard} />
           {/* <Route path="" component={UhOh404}  /> */}
          
         </div>

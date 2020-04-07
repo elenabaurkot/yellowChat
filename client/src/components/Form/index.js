@@ -25,3 +25,12 @@ export function FormBtn(props) {
     </button>
   );
 }
+
+
+export function Text(props) {
+  return (
+    <div className="form-group">
+      <text className="form-control"  {...props} />
+    </div>
+  );
+}

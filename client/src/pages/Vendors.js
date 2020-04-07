@@ -1,16 +1,19 @@
 import React, { Component } from "react";
+import Moment from "moment"; 
 import Jumbotron from "../components/Jumbotron";
 import Container from "../components/Container";
 import Row from "../components/Row";
 import Column from "../components/Column";
 import { Link } from "react-router-dom";
 import { List, ListItem } from "../components/List";
-import { getVendors } from "../utils/API";
+import { getVendors }  from "../utils/API";
+import { saveHistory } from "../utils/APIHistory";
 import Navy from "../components/Navy"
 import Reviews from "./Reviews"
 
 
- // get all vendors and displays them for chatting
+
+ // get all vendors and displays them for chatting also loads page history
 class Vendors extends Component {
   state = {
     userList: []
@@ -18,10 +21,23 @@ class Vendors extends Component {
 
  
   handleGetVendors = () => {
+
     getVendors().then(({ data: userList }) => {
       console.log("getVendors", userList);
       this.setState({ userList })
     }).catch(err => console.log(err))
+
+    // loads page history into db
+    saveHistory({
+       historytype: "Vendor Page",
+        username:    "test",
+        detail:      "arrived at vendor page",
+        date:         Moment().format()
+    })
+    .then(
+    ).catch((err) => console.log(err))
+
+  
   }
 
   componentDidMount() {
@@ -61,6 +77,7 @@ class Vendors extends Component {
                     ))}
                   </List>
                   <Reviews />
+                  {/* <InputHistory /> */}
                 </div>
               ) : (
                   <h3>No Results to Display</h3>

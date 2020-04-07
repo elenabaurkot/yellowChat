@@ -14,8 +14,13 @@ export const getVendors = () =>{
     return axios.get('/api/users/vendors'); 
 }
 
+
 export default {   
     getUsers,
     getCustomers,
     getVendors
+
 }
+
+
+
