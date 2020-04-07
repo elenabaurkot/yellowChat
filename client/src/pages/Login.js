@@ -5,65 +5,65 @@ import PropTypes from "prop-types";
 import { loginUser } from "../actions/authActions";
 import { clearErrors } from "../actions/errorAction";
 
-
 class Login extends Component {
   constructor() {
     super();
     this.state = {
       email: "",
       password: "",
-      errors: {}
+      errors: {},
     };
   }
 
-static propTypes = {
-  isRegistered: PropTypes.bool,
-  isAuthenticated: PropTypes.bool,
-  error: PropTypes.object,
-  loginUser: PropTypes.func.isRequired,
-  clearErrors: PropTypes.func.isRequired
-}
+  static propTypes = {
+    isRegistered: PropTypes.bool,
+    isAuthenticated: PropTypes.bool,
+    error: PropTypes.object,
+    loginUser: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired,
+  };
 
-// probably need a component did update here
-componentDidUpdate(prevProps) {
-  const { error, isAuthenticated } = this.props;
-  if(error !== prevProps.error) {
-    // check for register error
-    if(error.id === "LOGIN_FAIL") {
-      this.setState({message: error.message.message})
-    } else {
-      this.setState({message: null})
+  // probably need a component did update here
+  componentDidUpdate(prevProps) {
+    const { error, isAuthenticated } = this.props;
+    if (error !== prevProps.error) {
+      // check for register error
+      if (error.id === "LOGIN_FAIL") {
+        this.setState({ message: error.message.message });
+      } else {
+        this.setState({ message: null });
+      }
+    }
+    // if authenticated, redirect to main page
+    // need to make this work still
+    if (isAuthenticated) {
+      console.log("You're logged in");
+      if (this.props.usertype === "Vendor") {
+        this.props.history.push("/customers");
+      } else {
+        this.props.history.push("/vendors");
+      }
     }
   }
-  // if authenticated, redirect to main page
-  if(isAuthenticated) {
-    console.log("You're logged in");
-    if (this.props.usertype === "Vendor") {
-    this.props.history.push("/customers");
-    } else {
-      this.props.history.push("/vendors");
-    }
-  }
-}
 
-onChange = e => {
-  const { name, value } = e.target;
-  this.setState({ [name]: value});
-};
+  onChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
 
-onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
     const userData = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
     };
-// console.log(userData);
-this.props.loginUser(userData);
+    // console.log(userData);
+    this.props.loginUser(userData);
   };
-  
-render() {
+
+  render() {
     const { errors } = this.state;
-return (
+    return (
       <div className="container">
         <div style={{ marginTop: "4rem" }} className="row">
           <div className="col s8 offset-s2">
@@ -76,7 +76,8 @@ return (
                 <b>Login</b> below
               </h4>
               <p className="grey-text text-darken-1">
-                Don't have an account? <Link to="/vendorCustomer">Register</Link>
+                Don't have an account?{" "}
+                <Link to="/vendorCustomer">Register</Link>
               </p>
             </div>
             <form noValidate onSubmit={this.onSubmit}>
@@ -106,7 +107,7 @@ return (
                     width: "150px",
                     borderRadius: "3px",
                     letterSpacing: "1.5px",
-                    marginTop: "1rem"
+                    marginTop: "1rem",
                   }}
                   type="submit"
                   className="btn btn-large waves-effect waves-light hoverable blue accent-3"
@@ -122,13 +123,10 @@ return (
   }
 }
 
-const mapStateProps = state => ({
-  isRegistered: state.auth.isRegistered, 
+const mapStateProps = (state) => ({
+  isRegistered: state.auth.isRegistered,
   isAuthenticated: state.auth.isAuthenticated,
-  error: state.error
-})
+  error: state.error,
+});
 
-export default connect(
-  mapStateProps, 
-  {loginUser, clearErrors}
-) (Login);
+export default connect(mapStateProps, { loginUser, clearErrors })(Login);
