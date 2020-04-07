@@ -8,12 +8,12 @@ class Navbar extends Component {
           <div className="nav-wrapper yellow">
             <Link
               to="/"
-              style={{
-                fontFamily: "monospace"
-              }}
+              style={{           
+                fontFamily: 'Abril Fatface'
+            }}
               className="col s5 brand-logo center black-text"
             >
-              YellowChat
+              YELLOWchat
             </Link>
           </div>
         </nav>

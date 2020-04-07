@@ -80,7 +80,7 @@ this.props.registerUser(newUser);
 render() {
     // const { errors } = this.state;
 return (
-      <div className="container">
+      <div className="container" style={{ backgroundColor: "white"}}>
         <div className="row">
           <div className="col s8 offset-s2">
             <Link to="/" className="btn-flat waves-effect">
@@ -218,7 +218,7 @@ return (
                     marginTop: "1rem"
                   }}
                   type="submit"
-                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                  className="btn btn-large waves-effect waves-light hoverable  red lighten-3"
                 >
                   Sign up
                 </button>

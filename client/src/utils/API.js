@@ -1,5 +1,8 @@
 import axios from  'axios';
 
+// export const getUserInfo = () =>{
+//     return axios.get('/api/users/login') 
+// }
 
 export const getUsers = (token) =>{
     return axios.get('/api/users', {headers: {"x-auth-token": token}}); 

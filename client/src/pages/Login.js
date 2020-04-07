@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { loginUser } from "../actions/authActions";
 import { clearErrors } from "../actions/errorAction";
+// import { getUserInfo } from "../utils/API";
+
 
 class Login extends Component {
   constructor() {
@@ -12,6 +14,7 @@ class Login extends Component {
       email: "",
       password: "",
       errors: {},
+      user: {}
     };
   }
 
@@ -51,14 +54,28 @@ class Login extends Component {
     this.setState({ [name]: value });
   };
 
+
+  // handleGetUser = () => {
+  //   getUserInfo()
+  //     .then(({ data: user }) => {
+  //       console.log("getVendors", user);
+  //       this.setState({ user });
+  //     })
+  //     .catch((err) => console.log(err));
+  //   }
+
+
   onSubmit = (e) => {
     e.preventDefault();
     const userData = {
       email: this.state.email,
-      password: this.state.password,
+      password: this.state.password
+      // maybe here I can do axios call to get usertype? 
     };
-    // console.log(userData);
+    // this.handleGetUser();
+    console.log(userData);
     this.props.loginUser(userData);
+    // AXIOS CALL HERE TO GET REST OF USER INFO
   };
 
   render() {
@@ -110,7 +127,7 @@ class Login extends Component {
                     marginTop: "1rem",
                   }}
                   type="submit"
-                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                  className="btn btn-large waves-effect waves-light hoverable  red lighten-3"
                 >
                   Login
                 </button>

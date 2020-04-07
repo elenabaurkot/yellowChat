@@ -10,7 +10,7 @@ button:focus {
   outline: none;
 }
 body {
-  font: 16px Helvetica, Arial;
+  font-family: 'Arimo', sans-serif;
 }
 #sendform {
   background: white;

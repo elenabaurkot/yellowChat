@@ -43,10 +43,11 @@ class Customers extends Component {
   render() {
     return (
       <>
-        <Navyvendorside />
         {/* If user is logged in show page with vendors */}
 
         {this.state.userList.length ? (
+        <div>
+          <Navyvendorside />
           <Container fluid>
             <Row>
               <Column size="md-6 sm-12">
@@ -54,7 +55,7 @@ class Customers extends Component {
                   fluid
                   bg={"light"}
                   color={"dark"}
-                  pageTitle={"Vendors"}
+                  pageTitle={"Customers"}
                 />
                 <List>
                   {this.state.userList.map((user) => (
@@ -90,6 +91,7 @@ class Customers extends Component {
               </Column>
             </Row>
           </Container>
+        </div>
         ) : (
           // If user is not logged in show page that sends them to login/register
           <div style={{ height: "50vh" }} className="container valign-wrapper">

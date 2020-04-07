@@ -44,10 +44,9 @@ class Vendors extends Component {
   render() {
     return (
       <>
-        <Navy />
-
         {this.state.userList.length ? (
           <div>
+          <Navy />
             <Container fluid>
               <Row>
                 <Column size="md-6 sm-12">
