@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Nav, Form } from 'react-bootstrap'
 import {getVendors } from "../utils/API"
-import { logoutUser } from "../actions/authActions";
+
 
 function Navy(props) {
     const [queryValue, setValue] = useState('')
@@ -97,5 +97,3 @@ function Navy(props) {
 }
 
 export default Navy;
-// export default connect({ logoutUser}) (Navy);
-// export default connect(mapStateProps, {logoutUser}) (Navy);

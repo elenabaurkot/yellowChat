@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Navbar, Nav, Form } from "react-bootstrap";
 import { getCustomers } from "../utils/API";
-import { logoutUser } from "../actions/authActions";
+
 
 // navagation with search
 function Navy(props) {
@@ -105,5 +105,4 @@ function Navy(props) {
 }
 
 export default Navy;
-// export default connect({ logoutUser}) (Navy);
-// export default connect(mapStateProps, {logoutUser}) (Navy);
+

@@ -55,13 +55,18 @@ onSubmit = e => {
         this.state.password === '' ||
         this.state.password2 === '' 
      ) {
-      return this.setState({error: 'This field is required'})
+      return this.setState({message: 'This field is required'})
   };
 
   if (this.state.password !== this.state.password2) {
-    return this.setState({error: 'Passwords must match'})
+    return this.setState({message: 'Passwords must match'})
   }
 
+  // User.findOne({ email })
+  //   .then(user => { 
+  //     if(user) return res.status(400).json({message: 'Email already exists'})
+  //   })
+  
 const newUser = {
       name: this.state.name,
       usertype: "Customer",
@@ -71,6 +76,7 @@ const newUser = {
       password: this.state.password,
       password2: this.state.password2
     };
+  
 // console.log(newUser);
 this.props.registerUser(newUser);
   };
