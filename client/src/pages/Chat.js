@@ -1,14 +1,27 @@
 // App.js
-import Moment from "moment"; 
+
 import React, { useState, useEffect } from 'react';
 import useSocket from 'use-socket.io-client';
 import { useImmer } from 'use-immer';
 import './index.css';
 import Navy from '../components/Navy'
-import { useParams} from "react-router-dom";
-import { saveHistory } from "../utils/APIHistory";
+import {
+  useParams
+} from "react-router-dom";
+import { animateScroll } from "react-scroll";
+
+function scrollToBottom() {
+    animateScroll.scrollToBottom({
+      containerId: "messages"
+    });
+}
 
 
+let styleMessages = {
+  display:'block',
+    height:'650px',
+    
+}
 const Messages = props => props.data.map(m => m[0] !== '' ? (<li><strong>{m[0]}</strong> : <div className="innermsg">{m[1]}</div></li>) : (<li className="update">{m[1]}</li>));
 
 const Online = props => props.data.map(m => <li id={m[0]}>{m[1]}</li>)
@@ -34,17 +47,6 @@ export default function Chat() {
   useEffect(() => {
     setRoom(vendorName);
   }, [])
-
-
-  // loads page history into db
-  saveHistory({
-    historytype: "Chat Page",
-    username:    "test",
-    detail:      `vendor name: ${vendorName}`,
-    date:         Moment().format()
-  })
-  .then().catch((err) => console.log(err))
-
 
   useEffect(() => {
     socket.on('message que', (nick, message) => {
@@ -95,22 +97,22 @@ export default function Chat() {
     if (input !== '') {
       socket.emit('chat message', input, room);
       setInput('');
+      scrollToBottom();
     }
   }
 
   return id ? (
-    <section style={{ display: 'flex', flexDirection: 'row' }} >
-      <ul id="messages"><Messages data={messages} /></ul>
-      <ul id="online"> <span role="img" aria-label="sheep">🌐</span> : <Online data={online} /> </ul>
+    <section data-simplebar style={{ display: 'flex', flexDirection: 'row' }} >
+      <ul style={styleMessages} id="messages"><Messages data={messages} /></ul>
+      <ul id="online"> 🌐 : <Online data={online} /> </ul>
       <div id="sendform">
         <form onSubmit={e => handleSend(e)} style={{ display: 'flex' }}>
-          <input id="m" onChange={e => setInput(e.target.value.trim())} /><button style={{ width: '75px' }} type="submit">Send</button>
+        <input value={input} id="m" onChange={e => setInput(e.target.value.trim())} /><button style={{ width: '75px' }} type="submit">Send</button>
         </form>
       </div>
     </section>
-  ) : (
-    //(conditional rendereing here possibly)
-      <div>
+  ):(
+    <div>
         <Navy />
         <div style={{ textAlign: 'center', margin: '30vh auto', width: '70%' }}>
           {/* <img src={process.env.PUBLIC_URL + '/yellowchat-logo2.PNG'} /> */}
@@ -124,7 +126,6 @@ export default function Chat() {
             <button type="submit">Submit</button>
           </form>
         </div>
-      </div>
+        </div>
     );
 };
-

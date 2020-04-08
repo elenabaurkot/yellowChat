@@ -103,6 +103,7 @@ export const setUserLoading = () => (dispatch, getState) => {
 
 // Log user out
 export const logoutUser = () => dispatch => {
+  localStorage.removeItem('token')
   return {
     type: LOGOUT_SUCCESS
   }

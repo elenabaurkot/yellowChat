@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Nav, Form } from 'react-bootstrap'
-import {getVendors } from "../utils/API"
+import { Navbar, Nav, Form } from 'react-bootstrap';
+import {getVendors } from "../utils/API";
+import Logout from './Logout';
 
 function Navy(props) {
     const [queryValue, setValue] = useState('')
@@ -9,14 +10,12 @@ function Navy(props) {
    
 
    function handleGetVendors (){
-        getVendors().then(({ data: userData }) => {
+    const token = localStorage.getItem("token");
+        getVendors(token).then(({ data: userData }) => {
             console.log("userData: ", userData);
             setUserList(userData)
             console.log("userlist ",userList)
         }).catch(err => console.log(err))
-
-       
-
     }
 
     useEffect(() => {
@@ -30,6 +29,7 @@ function Navy(props) {
 
         fontFamily: 'Titan One',
         color: 'yellow',
+        textTransform: 'capitalize'
 
     };
 
@@ -41,7 +41,7 @@ function Navy(props) {
         return (
             <div>
                 <Navbar bg="dark" variant="dark">
-                    <Navbar.Brand href="/" style={styles}>yellowchat</Navbar.Brand>
+                    <Navbar.Brand href="#" style={styles}>YELLOWchat</Navbar.Brand>
                     <Nav className="mr-auto">
                  
                         <Nav.Link href="#">click the @yellowchat link and chat with a shop now!</Nav.Link>
@@ -53,7 +53,7 @@ function Navy(props) {
                     </Form>
                 </Navbar>
 
-                {userList.filter(name => name.company.toLowerCase().includes(queryValue)).map(filteredName => (
+                {userList.filter(name => name.company.includes(queryValue)).map(filteredName => (
 
                     <div style={searchDiv}>
                         <tr>
@@ -76,14 +76,20 @@ function Navy(props) {
     return (
         <div>
             <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="/" style={styles}>yellowchat</Navbar.Brand>
+                <Navbar.Brand href="/" style={styles}>YELLOWchat</Navbar.Brand>
                 <Nav className="mr-auto">
-            
+                    {/* <Nav.Link href="/userlogin">Login</Nav.Link>
+                    <Nav.Link href="/userregister">Register</Nav.Link> */}
+                    {/* <Nav.Link href="/vendor">For Vendors</Nav.Link>
+                    <Nav.Link href="#">Contact</Nav.Link> */}
+
                 </Nav>
                 <Form inline>
                     <input onChange={event => setValue(event.target.value)} class="form-control" type="text" placeholder="chat with local shops" aria-label="Search"></input>
-            
+                    {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" /> */}
+                    {/* <Button variant="outline-info">Search</Button> */}
                 </Form>
+                <Logout />
             </Navbar>
         </div>
     )

@@ -12,7 +12,7 @@ class Landing extends Component {
             <h4 className="mb-2">
             Welcome to YellowChat
             </h4>
-            <img src="https://res.cloudinary.com/dejaksfsk/image/upload/v1585878569/yellowcat_ihfpsk.gif" width="250" height="250" alt="Yellow Cat" />
+            <img src="https://res.cloudinary.com/dsxuuory9/image/upload/v1586368238/Webp.net-gifmaker_ii7u1a.gif" width="250" height="250" alt="Yellow Cat" />
             <br />
 
             <h5 className="mb-5"
@@ -31,7 +31,7 @@ class Landing extends Component {
                   borderRadius: "3px",
                   letterSpacing: "1.5px"
                 }}
-                className="btn btn-large btn-group waves-effect waves-light hoverable blue accent-3"
+                className="btn btn-large btn-group waves-effect waves-light hoverable red lighten-3"
               >
                 Click Here to Get Started
               </Link>

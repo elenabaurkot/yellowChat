@@ -64,9 +64,9 @@ this.props.registerUser(newUser);
 render() {
     // const { errors } = this.state;
 return (
-      <div className="container">
+      <div className="container" style={{ backgroundColor: "white"}}>
         <div className="row">
-          <div className="col s8 offset-s2">
+          <div className="col s8 offset-s1">
             <Link to="/" className="btn-flat waves-effect">
               <i className="material-icons left">keyboard_backspace</i> Back to
               home
@@ -130,7 +130,7 @@ return (
                     marginTop: "1rem"
                   }}
                   type="submit"
-                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                  className="btn btn-large waves-effect waves-light hoverable red lighten-3"
                 >
                   Sign up
                 </button>

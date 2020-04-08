@@ -13,3 +13,4 @@ router.use("/blog", blogRoutes)
 router.use("/history", historyRoutes)
 
 module.exports = router;
+

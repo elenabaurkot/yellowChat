@@ -29,25 +29,28 @@ const email = req.body.email;
 // Check password
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
+        console.log(user);
         // User matched
-        // Create JWT Payload
-        const payload = {
-          id: user.id,
-          name: user.name
-        };
-// Sign token
-   jwt.sign(
-     payload,
-      config.get("jwtSecret"), 
-      {expiresIn: 3600},
-        (err, token) => {
-          if (err) throw (err);
-          res.json({
-            success: true,
-            token: "Bearer " + token
-          });
-        }
-      );
+        // Sign token
+        jwt.sign(
+          { id: user.id },
+          config.get("jwtSecret"),
+          { expiresIn: 3600 },
+          (err, token) => {
+            if (err) throw err;
+            res.json({
+              success: true,
+              token,
+              user: {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                usertype: user.usertype,
+              },
+              // token: "Bearer " + token
+            });
+          }
+        );
       } else {
         return res
           .status(400)
@@ -57,11 +60,15 @@ const email = req.body.email;
   });
 });
 
-router.get("/", (req, res) => {
-    User.find().select("-password") 
-      .then(user => {
-        res.json(user)
-      })
+
+  router.get("/user", (req, res) => {
+    User.findbyId(req.user.id)
+    .select('-password')
+    .then(user => res.json(user))
+      console.log(user)
   });
+
+
+   
 
 module.exports = router;
