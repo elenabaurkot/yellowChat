@@ -37,6 +37,7 @@ class Login extends Component {
         this.setState({ message: null });
       }
     }
+
     // if authenticated, redirect to main page
     // need to make this work still
     if (isAuthenticated) {
@@ -67,6 +68,14 @@ class Login extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
+
+    if (this.state.name === '' ||
+        this.state.password === ''
+        ) {
+          return this.setState({error: 'This field is required'})
+      };
+      // need alert for if email does not exist or password and email doesn't match
+
     const userData = {
       email: this.state.email,
       password: this.state.password
