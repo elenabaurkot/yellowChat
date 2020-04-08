@@ -36,6 +36,7 @@ class Vendors extends Component {
       .then()
       .catch((err) => console.log(err));
 
+  }
 
   componentDidMount() {
     this.handleGetVendors();
