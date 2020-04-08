@@ -104,7 +104,7 @@ export default function Chat() {
   return id ? (
     <section data-simplebar style={{ display: 'flex', flexDirection: 'row' }} >
       <ul style={styleMessages} id="messages"><Messages data={messages} /></ul>
-      <ul id="online"> 🌐 : <Online data={online} /> </ul>
+      <ul id="online"> <span role="img" aria-label="sheep">🌐</span> : <Online data={online} /> </ul>
       <div id="sendform">
         <form onSubmit={e => handleSend(e)} style={{ display: 'flex' }}>
         <input value={input} id="m" onChange={e => setInput(e.target.value.trim())} /><button style={{ width: '75px' }} type="submit">Send</button>
