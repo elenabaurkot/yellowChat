@@ -35,7 +35,7 @@ class Vendors extends Component {
     })
       .then()
       .catch((err) => console.log(err));
-  };
+
 
   componentDidMount() {
     this.handleGetVendors();
@@ -95,7 +95,7 @@ class Vendors extends Component {
                 </Column>
               </Row>
             </Container>
-            {/* <InputHistory /> */}
+
           </div>
         ) : (
           // If user is not logged in show page that sends them to login/register
@@ -115,7 +115,7 @@ class Vendors extends Component {
                       borderRadius: "3px",
                       letterSpacing: "1.5px",
                     }}
-                    className="btn btn-small waves-effect waves-light hoverable blue accent-3"
+                    className="btn btn-small waves-effect waves-light hoverable red lighten-3"
                   >
                     Register
                   </Link>
@@ -128,7 +128,8 @@ class Vendors extends Component {
                       borderRadius: "3px",
                       letterSpacing: "1.5px",
                     }}
-                    className="btn btn-small waves-effect waves-light hoverable blue accent-3"
+                    className="btn btn-small waves-effect waves-light hoverable red lighten-3"
+
                   >
                     Log In
                   </Link>

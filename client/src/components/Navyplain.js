@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from "react-router-dom";
@@ -14,7 +15,7 @@ function Navy(props) {
     return (
         <div>
             <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="/" style={styles}>yellowchat</Navbar.Brand>
+                <Navbar.Brand href="/" style={styles}>YELLOWchat</Navbar.Brand>
                 <Nav className="mr-auto">
                 <Link to={"/vendors" }>Link to Vendors</Link> &nbsp;&nbsp; <Link to={"/customers" }>Link to Customers</Link>                 
                 </Nav>              

@@ -34,15 +34,11 @@ class Login extends Component {
         this.setState({ message: null });
       }
     }
+    // console.log(user);
     // if authenticated, redirect to main page
-    // need to make this work still
     if (isAuthenticated) {
-      console.log("You're logged in");
-      if (this.props.usertype === "Vendor") {
-        this.props.history.push("/customers");
-      } else {
-        this.props.history.push("/vendors");
-      }
+      this.props.history.push("/vendors");
+
     }
   }
 
@@ -64,9 +60,9 @@ class Login extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div className="container">
+      <div className="container" style={{ backgroundColor: "white"}}>
         <div style={{ marginTop: "4rem" }} className="row">
-          <div className="col s8 offset-s2">
+          <div className="col s8 offset-s1">
             <Link to="/" className="btn-flat waves-effect">
               <i className="material-icons left">keyboard_backspace</i> Back to
               home
@@ -110,7 +106,7 @@ class Login extends Component {
                     marginTop: "1rem",
                   }}
                   type="submit"
-                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                  className="btn btn-large waves-effect waves-light hoverable red lighten-3"
                 >
                   Login
                 </button>

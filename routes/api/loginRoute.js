@@ -61,11 +61,15 @@ const email = req.body.email;
 });
 
 
-  router.get("/", (req, res) => {
-    User.find().select("-password") 
-      .then(user => {
-        res.json(user)
-      })
+  router.get("/user", (req, res) => {
+    User.findbyId(req.user.id)
+    .select('-password')
+    .then(user => res.json(user))
+      console.log(user)
+
   });
+
+
+   
 
 module.exports = router;

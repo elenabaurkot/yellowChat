@@ -49,11 +49,12 @@ import {
           isAuthenticated: true,
           loading: false
         }
-      case LOGOUT_SUCCESS: 
+       
       case REGISTER_FAIL:
       case LOGIN_FAIL:
       case AUTH_ERROR:
-        localStorage.removeItem("token");
+      case LOGOUT_SUCCESS:
+        localStorage.removeItem('token');
         return {
           ...state,
           isAuthenticated: false,
