@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Nav, Form } from 'react-bootstrap'
-import {getVendors } from "../utils/API"
-
+import { Navbar, Nav, Form } from 'react-bootstrap';
+import {getVendors } from "../utils/API";
+import Logout from './Logout';
 
 function Navy(props) {
     const [queryValue, setValue] = useState('')
@@ -89,7 +89,7 @@ function Navy(props) {
                     {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" /> */}
                     {/* <Button variant="outline-info">Search</Button> */}
                 </Form>
-                <Nav.Link style={{color: "rgba(255,255,255,0.5)", fontSize: "24px"}} href="#">Logout</Nav.Link>
+                <Logout />
             </Navbar>
         </div>
     )

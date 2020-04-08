@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Navbar, Nav, Form } from "react-bootstrap";
 import { getCustomers } from "../utils/API";
+import Logout from './Logout';
 
 
 // navagation with search
@@ -93,12 +94,7 @@ function Navy(props) {
             aria-label="Search"
           ></input>
         </Form>
-        <Nav.Link
-          style={{ color: "rgba(255,255,255,0.5)", fontSize: "24px" }}
-          href="#"
-        >
-          Logout
-        </Nav.Link>
+        <Logout />
       </Navbar>
     </div>
   );
