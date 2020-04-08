@@ -107,7 +107,7 @@ export default function Chat() {
       <ul id="online"> <span role="img" aria-label="sheep">🌐</span> : <Online data={online} /> </ul>
       <div id="sendform">
         <form onSubmit={e => handleSend(e)} style={{ display: 'flex' }}>
-        <input value={input} id="m" onChange={e => setInput(e.target.value.trim())} /><button style={{ width: '75px' }} type="submit">Send</button>
+        <input value={input} id="m" onChange={e => setInput(e.target.value)} /><button style={{ width: '75px' }} type="submit">Send</button>
         </form>
       </div>
     </section>
