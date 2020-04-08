@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Moment from "moment";
 import Jumbotron from "../components/Jumbotron";
 import Container from "../components/Container";
 import Row from "../components/Row";
@@ -6,10 +7,11 @@ import Column from "../components/Column";
 import { Link } from "react-router-dom";
 import { List, ListItem } from "../components/List";
 import { getVendors } from "../utils/API";
+import { saveHistory } from "../utils/APIHistory";
 import Navy from "../components/Navy";
 import Reviews from "./Reviews";
 
-// get all vendors and displays them for chatting
+// get all vendors and displays them for chatting also loads page history
 class Vendors extends Component {
   state = {
     userList: [],
@@ -23,7 +25,17 @@ class Vendors extends Component {
         this.setState({ userList });
       })
       .catch((err) => console.log(err));
-  };
+
+    // loads page history into db
+    saveHistory({
+      historytype: "Vendor Page",
+      username: "test",
+      detail: "arrived at vendor page",
+      date: Moment().format(),
+    })
+      .then()
+      .catch((err) => console.log(err));
+
 
   componentDidMount() {
     this.handleGetVendors();
@@ -83,6 +95,7 @@ class Vendors extends Component {
                 </Column>
               </Row>
             </Container>
+
           </div>
         ) : (
           // If user is not logged in show page that sends them to login/register
@@ -116,6 +129,7 @@ class Vendors extends Component {
                       letterSpacing: "1.5px",
                     }}
                     className="btn btn-small waves-effect waves-light hoverable red lighten-3"
+
                   >
                     Log In
                   </Link>

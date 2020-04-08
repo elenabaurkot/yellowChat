@@ -66,6 +66,7 @@ const email = req.body.email;
     .select('-password')
     .then(user => res.json(user))
       console.log(user)
+
   });
 
 

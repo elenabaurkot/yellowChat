@@ -2,7 +2,6 @@ const router = require("express").Router();
 const { getUsers, getCustomers, getVendors } = require("../../controllers/userController");
 const auth = require("../../middleware/auth");
 
-
   router.route('/')
   .get(auth, getUsers)
  
@@ -11,8 +10,6 @@ const auth = require("../../middleware/auth");
 
   router.route('/vendors')
   .get(auth, getVendors)
-
-
 
 module.exports = router;
 

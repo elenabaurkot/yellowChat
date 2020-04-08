@@ -38,6 +38,7 @@ class Login extends Component {
     // if authenticated, redirect to main page
     if (isAuthenticated) {
       this.props.history.push("/vendors");
+
     }
   }
 

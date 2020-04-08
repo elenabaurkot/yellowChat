@@ -56,6 +56,7 @@ class Customers extends Component {
                   bg={"light"}
                   color={"dark"}
                   pageTitle={"Customers"}
+
                 />
                 <List>
                   {this.state.userList.map((user) => (
