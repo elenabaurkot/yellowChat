@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { registerUser } from "../../actions/authActions";
 import { clearErrors } from "../../actions/errorAction";
-// import Alert from "../components/Alert";
 
 class VendorRegister extends Component {
   constructor() {
@@ -22,7 +21,8 @@ class VendorRegister extends Component {
       zip: "",
       phone: "",
       website: "",
-      message: null
+      message: null,
+      error: null
     };
   }
 
@@ -56,11 +56,25 @@ onChange = e => {
   };
 onSubmit = e => {
     e.preventDefault();
+
+    if (this.state.company === '' ||
+        this.state.name === '' ||
+        this.state.email === '' ||
+        this.state.password === '' ||
+        this.state.password2 === '' 
+     ) {
+      return this.setState({error: 'This field is required'})
+    };
+
+    if (this.state.password !== this.state.password2) {
+      return this.setState({error: 'Passwords must match'})
+    }
+
 const newUser = {
       company: this.state.company,
       name: this.state.name,
       usertype: "Vendor",
-      // make with no spaces
+      // takes out the spaces
       username: this.state.company.replace(/\s+/g, ''),
       categories: this.state.categories,
       email: this.state.email,
@@ -78,7 +92,6 @@ const newUser = {
 this.props.registerUser(newUser);
   };
 render() {
-    // const { errors } = this.state;
 return (
       <div className="container" style={{ backgroundColor: "white"}}>
         <div className="row">
@@ -101,30 +114,48 @@ return (
                 <input
                   onChange={this.onChange}
                   name="company"
-                  // error={errors.name}
                   id="company"
                   type="text"
                 />
+                {/* error message */}
+                {this.state.error &&
+                    !this.state.company.length && (
+                        <div className='alert alert-danger my-2'>
+                            {this.state.error}
+                        </div>
+                    )}
                 <label htmlFor="company">Company</label>
               </div>
               <div className="input-field col s12">
                 <input
                   onChange={this.onChange}
                   name="name"
-                  // error={errors.name}
                   id="name"
                   type="text"
                 />
+                {/* error message */}
+                {this.state.error &&
+                    !this.state.name.length && (
+                        <div className='alert alert-danger my-2'>
+                            {this.state.error}
+                        </div>
+                    )}
                 <label htmlFor="name">Name</label>
               </div>
               <div className="input-field col s12">
                 <input
                   onChange={this.onChange}
                   name="email"
-                  // error={errors.email}
                   id="email"
                   type="email"
                 />
+                {/* error message */}
+                {this.state.error &&
+                    !this.state.email.length && (
+                        <div className='alert alert-danger my-2'>
+                            {this.state.error}
+                        </div>
+                    )}
                 <label htmlFor="email">Email</label>
               </div>
               <div className="input-field col s12">
@@ -144,6 +175,13 @@ return (
                   id="password"
                   type="password"
                 />
+                {/* error message */}
+                {this.state.error &&
+                    !this.state.password.length && (
+                        <div className='alert alert-danger my-2'>
+                            {this.state.error}
+                        </div>
+                    )}
                 <label htmlFor="password">Password</label>
               </div>
               <div className="input-field col s12">
@@ -153,6 +191,19 @@ return (
                   id="password2"
                   type="password"
                 />
+                {/* error message */}
+                {this.state.error &&
+                    !this.state.password2.length && (
+                        <div className='alert alert-danger my-2'>
+                            {this.state.error}
+                        </div>
+                    )}
+                {this.state.error &&
+                    this.state.password !== this.state.password2 && (
+                        <div className='alert alert-danger my-2'>
+                            {this.state.error}
+                        </div>
+                    )}
                 <label htmlFor="password2">Confirm Password</label>
               </div>
               <div className="input-field col s12">

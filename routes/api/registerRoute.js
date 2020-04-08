@@ -18,7 +18,13 @@ router.post("/", (req, res) => {
 //   if (!isValid) {
 //     return res.status(400).json(errors);
 //   }
+if(!name || !email || !password || !password2 || !company ) {
+  return res.status(400).json({ msg: 'Please enter required fields'})
+}
 
+if(password !== password2) {
+  return res.status(400).json({ msg: 'Passwords must match'})
+}
 // const {name, username, email, password, usertype} = req.body; 
   
 User.findOne({ email: req.body.email }).then(user => {

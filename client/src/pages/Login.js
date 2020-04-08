@@ -102,7 +102,7 @@ class Login extends Component {
                 <input
                   onChange={this.onChange}
                   name="email"
-                  error={errors.email}
+                  error= {errors.email}
                   id="email"
                   type="email"
                 />

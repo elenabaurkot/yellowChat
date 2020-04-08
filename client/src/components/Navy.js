@@ -97,3 +97,5 @@ function Navy(props) {
 }
 
 export default Navy;
+// export default connect({ logoutUser}) (Navy);
+// export default connect(mapStateProps, {logoutUser}) (Navy);

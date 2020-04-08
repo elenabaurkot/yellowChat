@@ -61,18 +61,14 @@ const email = req.body.email;
 });
 
 
-  // router.get("/", (req, res) => {
-  //   const email = req.body.email;
-  //   User.findOne({ email }).then(user => {
-  //       res.json(user)
-  //       console.log(user, "user")
-  //     })
-  // });
+  router.get("/user", (req, res) => {
+    User.findbyId(req.user.id)
+    .select('-password')
+    .then(user => res.json(user))
+      console.log(user)
+  });
 
 
-  
-   
-  // Find user by email
    
 
 module.exports = router;
