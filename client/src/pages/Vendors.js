@@ -7,15 +7,48 @@ import Column from "../components/Column";
 import { Link } from "react-router-dom";
 import { List, ListItem } from "../components/List";
 import { getVendors } from "../utils/API";
+import { getCustomers } from "../utils/API";
 import { saveHistory } from "../utils/APIHistory";
 import Navy from "../components/Navy";
+import Navyvendorside from "../components/Navyvendorside";
 import Reviews from "./Reviews";
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 
 // get all vendors and displays them for chatting also loads page history
 class Vendors extends Component {
   state = {
     userList: [],
+    userList1: []
   };
+
+  static propTypes = {
+    auth: PropTypes.object.isRequired
+  }
+
+  handlegetCustomers = () => {
+    const token = localStorage.getItem("token");
+    getCustomers(token)
+      .then(({ data: userList1 }) => {
+        console.log("getCustomers: ", userList1);
+        this.setState({ userList1 });
+      })
+      .catch((err) => console.log(err));
+
+    // loads page history into db
+    const  user  = this.props.auth
+    saveHistory({
+      historytype: "Customer Page",
+      username: `${user.username}`,
+      detail: "arrived at customer page",
+      date: Moment().format(),
+    })
+      .then()
+      .catch((err) => console.log(err));
+  };
+
+
 
   handleGetVendors = () => {
     const token = localStorage.getItem("token");
@@ -27,9 +60,10 @@ class Vendors extends Component {
       .catch((err) => console.log(err));
 
     // loads page history into db
+    const  user  = this.props.auth
     saveHistory({
       historytype: "Vendor Page",
-      username: "test",
+      username: `${user.username}`,
       detail: "arrived at vendor page",
       date: Moment().format(),
     })
@@ -40,15 +74,16 @@ class Vendors extends Component {
 
   componentDidMount() {
     this.handleGetVendors();
+    this.handlegetCustomers();
   }
 
   render() {
+    const { user } = this.props.auth
     return (
       <>
-        <Navy />
-
-        {this.state.userList.length ? (
+        {this.state.userList.length && user.usertype === 'Customer' ? (
           <div>
+            <Navy />
             <Container fluid>
               <Row>
                 <Column size="md-6 sm-12">
@@ -98,6 +133,54 @@ class Vendors extends Component {
             </Container>
 
           </div>
+        ) : this.state.userList1.length  ?  (
+          <div>
+          <Navyvendorside />
+          <Container fluid>
+            <Row>
+              <Column size="md-6 sm-12">
+                <Jumbotron
+                  fluid
+                  bg={"light"}
+                  color={"dark"}
+                  pageTitle={"Customers"}
+
+                />
+                <List>
+                  {this.state.userList1.map((user) => (
+                    <ListItem key={user._id}>
+                      <Link to={"/chat/" + user.username}>
+                        Click to Chat{" "}
+                        <span role="img" aria-label="sheep">
+                          💬
+                        </span>
+                      </Link>
+                      <div className="new-line">
+                        <span className="font-weight-bold"> {user.name} </span>{" "}
+                      </div>
+
+                      <div className="new-line">
+                        &nbsp; Email: {user.email}{" "}
+                      </div>
+
+                      {user.categories[0] ? (
+                        <div className="new-line">
+                          &nbsp; Interests:{" "}
+                          <span className="font-weight-bold">
+                            {user.categories[0]} {user.categories[1]}{" "}
+                            {user.categories[2]}
+                          </span>
+                        </div>
+                      ) : (
+                        <div className="new-line"> </div>
+                      )}
+                    </ListItem>
+                  ))}
+                </List>
+              </Column>
+            </Row>
+          </Container>
+        </div>
         ) : (
           // If user is not logged in show page that sends them to login/register
           <div style={{ height: "50vh" }} className="container valign-wrapper">
@@ -144,4 +227,8 @@ class Vendors extends Component {
   }
 }
 
-export default Vendors;
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps, null) (Vendors);
