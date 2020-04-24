@@ -265,6 +265,12 @@ return (
                             {this.state.error}
                         </div>
                     )}
+                {this.state.error &&
+                    (!this.state.company.length || !this.state.name.length || !this.state.email.length || !this.state.password.length || !this.state.password2.length) && (
+                        <div className='alert alert-danger my-2'>
+                            {this.state.error}
+                        </div>
+                    )}
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                 <button
