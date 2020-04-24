@@ -49,6 +49,19 @@ onChange = e => {
   };
 onSubmit = e => {
     e.preventDefault();
+
+    if (this.state.name === '' ||
+        this.state.email === '' ||
+        this.state.password === '' ||
+        this.state.password2 === '' 
+     ) {
+      return this.setState({error: 'This field is required'})
+    };
+
+    if (this.state.password !== this.state.password2) {
+      return this.setState({error: 'Passwords must match'})
+    }
+    
 const newUser = {
       name: this.state.name,
       usertype: "Customer",
@@ -89,7 +102,14 @@ return (
                   id="name"
                   type="text"
                 />
-                <label htmlFor="name">Name</label>
+                {/* error message */}
+                {this.state.error &&
+                    !this.state.name.length && (
+                        <div className='alert alert-danger my-2'>
+                            {this.state.error}
+                        </div>
+                    )}
+                <label htmlFor="name">Name *</label>
               </div>
               <div className="input-field col s12">
                 <input
@@ -99,7 +119,14 @@ return (
                   id="email"
                   type="email"
                 />
-                <label htmlFor="email">Email</label>
+                {/* error message */}
+                {this.state.error &&
+                    !this.state.email.length && (
+                        <div className='alert alert-danger my-2'>
+                            {this.state.error}
+                        </div>
+                    )}
+                <label htmlFor="email">Email *</label>
               </div>
               <div className="input-field col s12">
                 <input
@@ -109,7 +136,14 @@ return (
                   id="password"
                   type="password"
                 />
-                <label htmlFor="password">Password</label>
+                {/* error message */}
+                {this.state.error &&
+                    !this.state.password.length && (
+                        <div className='alert alert-danger my-2'>
+                            {this.state.error}
+                        </div>
+                    )}
+                <label htmlFor="password">Password *</label>
               </div>
               <div className="input-field col s12">
                 <input
@@ -119,7 +153,20 @@ return (
                   id="password2"
                   type="password"
                 />
-                <label htmlFor="password2">Confirm Password</label>
+                {/* error message */}
+                {this.state.error &&
+                    !this.state.password2.length && (
+                        <div className='alert alert-danger my-2'>
+                            {this.state.error}
+                        </div>
+                    )}
+                {this.state.error &&
+                    this.state.password !== this.state.password2 && (
+                        <div className='alert alert-danger my-2'>
+                            {this.state.error}
+                        </div>
+                    )}
+                <label htmlFor="password2">Confirm Password *</label>
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                 <button
