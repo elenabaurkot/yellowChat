@@ -17,8 +17,6 @@ import CustomerRegister from "./pages/register/CustomerRegister";
 import VendorRegister from "./pages/register/VendorRegister";
 import Reviews from './pages/Reviews'
 import RegisterLogin from "./pages/RegisterLogin";
-import "./App.css";
-
 
 
 function App() {

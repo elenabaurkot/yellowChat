@@ -12,7 +12,7 @@ class Landing extends Component {
             <h4 className="mb-2">
             Welcome to YellowChat
             </h4>
-            <img src="https://res.cloudinary.com/dsxuuory9/image/upload/v1586368238/Webp.net-gifmaker_ii7u1a.gif" width="250" height="250" alt="Yellow Cat" />
+            <img src="https://res.cloudinary.com/dsxuuory9/image/upload/v1587767393/cat_q1pkkh.gif" width="250" height="250" alt="Yellow Cat" />
             <br />
 
             <h5 className="mb-5"
