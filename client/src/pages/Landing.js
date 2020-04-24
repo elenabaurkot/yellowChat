@@ -31,7 +31,7 @@ class Landing extends Component {
                   borderRadius: "3px",
                   letterSpacing: "1.5px"
                 }}
-                className="btn btn-large btn-group waves-effect waves-light hoverable red lighten-3"
+                className="btn btn-large btn-group waves-effect waves-light hoverable blue accent-3"
               >
                 Click Here to Get Started
               </Link>

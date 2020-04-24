@@ -17,7 +17,7 @@ import PropTypes from 'prop-types';
 
 
 // get all vendors and displays them for chatting also loads page history
-class Vendors extends Component {
+class VendorsCustomersPage extends Component {
   state = {
     userList: [],
     userList1: []
@@ -199,7 +199,7 @@ class Vendors extends Component {
                       borderRadius: "3px",
                       letterSpacing: "1.5px",
                     }}
-                    className="btn btn-small waves-effect waves-light hoverable red lighten-3"
+                    className="btn btn-small waves-effect waves-light hoverable blue accent-3"
                   >
                     Register
                   </Link>
@@ -212,7 +212,7 @@ class Vendors extends Component {
                       borderRadius: "3px",
                       letterSpacing: "1.5px",
                     }}
-                    className="btn btn-small waves-effect waves-light hoverable red lighten-3"
+                    className="btn btn-small waves-effect waves-light hoverable blue accent-3"
 
                   >
                     Log In
@@ -231,4 +231,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 })
 
-export default connect(mapStateToProps, null) (Vendors);
+export default connect(mapStateToProps, null) (VendorsCustomersPage);

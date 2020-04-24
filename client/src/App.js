@@ -7,10 +7,8 @@ import store from "./store";
 import Login from "./pages/Login";
 import Users from "./pages/Users";
 import Chat from "./pages/Chat";
-import Customers from "./pages/Customers";
-import Vendors from "./pages/Vendors";
+import VendorsCustomersPage from "./pages/VendorsCustomersPage";
 import Dashboard from "./pages/Dashboard";
-// import UhOh404 from "./pages/UhOh404";
 import Navbar from "./components/Navbar";
 import Landing from "./pages/Landing";
 import Main from "./pages/Main";
@@ -34,8 +32,7 @@ function App() {
           <Route exact path='/' component={Landing}  />
           <Route  path='/registerLogin' component={RegisterLogin}  /> 
           <Route  path='/users' component={Users}  /> 
-          <Route  path='/customers' component={Customers}  /> 
-          <Route  path='/vendors' component={Vendors}  /> 
+          <Route  path='/vendors' component={VendorsCustomersPage}  /> 
           <Route  path='/chat/:vendorName' component={Chat}  />
           <Route  path="/login" component={Login} />
           <Route  path="/main" component={Main} />
@@ -44,7 +41,6 @@ function App() {
           <Route  path="/vendorRegister" component={VendorRegister} />
           <Route  path="/userreviews" component={Reviews} />
           <Route  path="/dashboard" component={Dashboard} />
-          {/* <Route path="" component={UhOh404}  /> */}
          
         </div>
         </Switch>
