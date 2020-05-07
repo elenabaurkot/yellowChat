@@ -61,7 +61,7 @@ onSubmit = e => {
     if (this.state.password !== this.state.password2) {
       return this.setState({error: 'Passwords must match'})
     }
-
+    
 const newUser = {
       name: this.state.name,
       usertype: "Customer",
