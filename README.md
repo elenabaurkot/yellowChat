@@ -2,6 +2,8 @@
 
 Welcome to YelloChat, a MERN site designed to bring small businesses and customers together. YellowChat's engine is a specially blog for small shops and vendors to keep in contact with their local hometown customer base under any conditions. Customers will have direct access to shop owners.
 
+<img src= 'https://res.cloudinary.com/dsxuuory9/image/upload/v1589120514/portfolio/Screen_Shot_2020-05-10_at_10.17.50_AM_ytlsdw.png' />
+
 ## Table of Contents
 <ol>
     <li><a href="#motivation">Motivation</a></li>
